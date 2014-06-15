@@ -1,15 +1,18 @@
+<% if not current_user.present? %>
 <h1> Welcome to BlocitOff! </h1>
-<body> BlocitOff helps you focus on the things that really matter </body>
+<body> BlocitOff helps you focus on the things that really matter. Sign up for an account to get your own personalized todo list!</body>
+<% end %>
+<% if current_user.present? %>
 <h2> TODOS!!! </h2>
 <small>New TODO? <%= link_to "New Todo", new_todo_path %></small>
 <br>
-<% if current_user.present? %>
 <tr>
   <td> TASK </td>
   <td> Time Left </td>
 </tr>
 <br>
 <% @todos.each do |f| %>
+<% (f.destroy && next) if (f.time_left <= 0) %>
 <tr>
   <td><%= f.description %></td>
   <td><%= f.time_left %></td>
