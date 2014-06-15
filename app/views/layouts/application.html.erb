@@ -7,14 +7,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class="pull-right user-info">
+  <div class="container">
+    <ul class="nav nav-tabs">
     <% if current_user %>
-      Hello <%= current_user.email %>! <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+      <li> <%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
     <% else %>
-      <%= link_to "Sign In", new_user_session_path %> or
-      <%= link_to "Sign Up", new_user_registration_path %>
+      <li><%= link_to "Sign In", new_user_session_path %></li>
+      <li><%= link_to "Sign Up", new_user_registration_path %></li>
     <% end %>
-<p><%= flash[:notice] if flash[:notice] %></p>
+    </ul>
+  </div>
+<p align="center"><%= flash[:notice] if flash[:notice] %></p>
 <%= yield %>
 
 </body>

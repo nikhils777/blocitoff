@@ -1,23 +1,24 @@
 <% if not current_user.present? %>
-<h1> Welcome to BlocitOff! </h1>
-<body> BlocitOff helps you focus on the things that really matter. Sign up for an account to get your own personalized todo list!</body>
+<h1 align="center"> Welcome to BlocitOff! </h1>
+<body align="center"> BlocitOff helps you focus on the things that really matter. Sign up for an account to get your own personalized todo list!</body>
 <% end %>
 <% if current_user.present? %>
-<h2> TODOS!!! </h2>
-<small>New TODO? <%= link_to "New Todo", new_todo_path %></small>
+<h2 align="center"> TODOS!!! </h2>
 <br>
-<tr>
+<table class="table table-bordered" align="center" style="width:600px">
+  <tr class="info">
   <td> TASK </td>
   <td> Time Left </td>
-</tr>
-<br>
+  <td> Delete Task </td>
+  </tr>
 <% @todos.each do |f| %>
 <% (f.destroy && next) if (f.time_left <= 0) %>
 <tr>
   <td><%= f.description %></td>
-  <td><%= f.time_left %></td>
-  <td><%= link_to "Compelete", f , method: :delete %></td>
+  <td><%= f.time_left %> Days</td>
+  <td><%= link_to "Completed", f , method: :delete %></td>
 </tr>
 <br>
 <% end %>
+<h5 align="center">New TODO? <%= link_to "New Todo", new_todo_path %></h5>
 <% end %>
