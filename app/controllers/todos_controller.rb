@@ -5,9 +5,6 @@ class TodosController < ApplicationController
   end
   def new
   end
-  def show
-    @todo = Todo.find(params[:id])
-  end
   def create
     @todo = current_user.todos.build(todo_params)
     @todo.save

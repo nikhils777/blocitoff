@@ -6,7 +6,7 @@ feature 'Project manager creates TODO' do
     fill_in 'Email', with: 'nsharmaknox@gmail.com'
     fill_in 'Password', with: 'yahooooo'
     click_button 'Log In'
-     
+    expect( page ).to have_content('Signed in') 
     visit new_todo_path
     fill_in 'Description', with: 'Meet up with the team'
     click_button 'Save'

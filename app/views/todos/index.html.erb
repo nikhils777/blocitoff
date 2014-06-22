@@ -20,5 +20,12 @@
 </tr>
 <br>
 <% end %>
-<h5 align="center">New TODO? <%= link_to "New Todo", new_todo_path %></h5>
+<table class="table table-bordered" align="center" style="width:400px">
+<%= form_for Todo.new do |form| %>
+<tr>
+<td><%= form.text_area :description, rows: 3, class: 'form-control', placeholder: 'Enter a new TODO item!' %></td>
+</tr>
+</table>
+<div align="center" style="margin:10px"><%= form.submit 'Add!', class: "btn btn-success" %></div>
+<% end %>
 <% end %>

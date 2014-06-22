@@ -6,18 +6,37 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body align="center">
   <div class="container">
     <ul class="nav nav-tabs">
     <% if current_user %>
       <li> <%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+      <div class="pull-right user-info">
+      Hello <%= current_user.name %>!
+      <%= link_to "Edit Info", edit_user_registration_path %>
+      </div>
     <% else %>
       <li><%= link_to "Sign In", new_user_session_path %></li>
       <li><%= link_to "Sign Up", new_user_registration_path %></li>
     <% end %>
     </ul>
   </div>
-<p align="center"><%= flash[:notice] if flash[:notice] %></p>
+<% if flash[:notice] %>
+  <div class="alert alert-success">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <%= flash[:notice] %>
+  </div>
+<% elsif flash[:error] %>
+  <div class="alert alert-danger" >
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <%= flash[:error] %>
+  </div>
+<% elsif flash[:alert] %>
+  <div class="alert" >
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <%= flash[:alert] %>
+  </div>
+<% end %>
 <%= yield %>
 
 </body>
