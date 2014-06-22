@@ -12,7 +12,6 @@
   <td> Delete Task </td>
   </tr>
 <% @todos.each do |f| %>
-<% (f.destroy && next) if (f.time_left <= 0) %>
 <tr>
   <td><%= f.description %></td>
   <td><%= f.time_left %> Days</td>
@@ -26,6 +25,6 @@
 <td><%= form.text_area :description, rows: 3, class: 'form-control', placeholder: 'Enter a new TODO item!' %></td>
 </tr>
 </table>
-<div align="center" style="margin:10px"><%= form.submit 'Add!', class: "btn btn-success" %></div>
+<div align="center" style="margin:10px"><%= form.submit 'Add!', class: "btn btn-success" %></div> 
 <% end %>
 <% end %>

@@ -8,7 +8,7 @@ class TodosController < ApplicationController
   def create
     @todo = current_user.todos.build(todo_params)
     @todo.save
-    redirect_to root_path , notice: 'Your new TODO was saved'
+    redirect_to root_path 
   end
   def destroy
     @todo = Todo.find(params[:id])

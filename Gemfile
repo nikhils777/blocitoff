@@ -34,6 +34,8 @@ gem 'jquery-rails'
 gem 'turbolinks'
 group :development, :test do
   gem 'rspec-rails'
+  gem 'factory_girl_rails', '~> 4.0'
+  gem 'database_cleaner'
   gem 'capybara'
 end
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
