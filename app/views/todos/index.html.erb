@@ -3,6 +3,7 @@
 <body align="center"> BlocitOff helps you focus on the things that really matter. Sign up for an account to get your own personalized todo list!</body>
 <% end %>
 <% if current_user.present? %>
+
 <h2 align="center"> TODOS!!! </h2>
 <br>
 <table class="table table-bordered" align="center" style="width:600px">
@@ -11,18 +12,23 @@
   <td> Time Left </td>
   <td> Delete Task </td>
   </tr>
-<% @todos.each do |f| %>
+<% @todos.each do |todo| %>
 <tr>
-  <td><%= f.description %></td>
-  <td><%= f.time_left %> Days</td>
-  <td><%= link_to "Completed", f , method: :delete %></td>
+  <td><%= todo.description %></td>
+  <td><%= todo.time_left %> Days</td>
+  <td><%= link_to "Completed", todo , method: :delete %></td>
 </tr>
 <br>
 <% end %>
 <table class="table table-bordered" align="center" style="width:400px">
-<%= form_for Todo.new do |form| %>
+<%= form_for @todo do |form| %>
+
 <tr>
-<td><%= form.text_area :description, rows: 3, class: 'form-control', placeholder: 'Enter a new TODO item!' %></td>
+<td>
+
+  <%= form.text_area :description, rows: 3, class: 'form-control', placeholder: 'Enter a new TODO item!' %>
+  
+</td>
 </tr>
 </table>
 <div align="center" style="margin:10px"><%= form.submit 'Add!', class: "btn btn-success" %></div> 
